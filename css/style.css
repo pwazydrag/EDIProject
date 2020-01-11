@@ -1,0 +1,26 @@
+ul.websites-logos{
+    display: flex;
+    flex-direction: row;
+}
+
+nav.navbar{
+    font-size: 20px;
+}
+
+.list-group-item:hover{
+    background-color: #bfff00 !important;
+    font-size: 18px;
+}
+
+.dropdown-item:hover{
+    color: #2E5894 !important;
+}
+
+body{
+    /*background-color: #d3d3d3;*/
+    background-color: black;
+}
+
+.container{
+    background-color: lightslategrey;
+}

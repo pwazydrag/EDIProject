@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Projekt</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body">
+    
+    <header>
+        <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+            <!-- navbar-expand-md sprawia że na menu rozwijane jest tylko na urzadzenia mobilne, navbar-dark bg-dark to kolory navbara i tekstu na nim--> 
+            <a class="navbar-brand" href="#"><img src="img/logo.png" width="50" height="50" class="mr-1"  alt="">ABCDEF</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu"><span class="navbar-toggler-icon"></span></button>
+            <!-- navbar-toggler-icon dodaje przycisk na urzadzenia mobilne ktory rozwija menu-->    
+
+            <div class="collapse navbar-collapse" id="mainmenu">
+            <!-- na wersje mobilna collapse - powoduje zniknięcie przycisków w nawigacji, są w rozwinieciu menu, id jest potrzebne aby klasa data-target wiedziała co ma rozwinac na urz. mobilne-->
+                
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item ml-lg-3"><a class="nav-link" href="#"> Start </a></li>
+
+                    <li class="nav-item dropdown ml-lg-3"><a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" href="#"> Statystyki </a>
+
+
+                        <div class="dropdown-menu">
+                            
+                            <a class="dropdown-item" href="#">Statystyka monetarna i finansowa</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Statystyka bilansu płatniczego</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Prognozy inflacji</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Rachunkowość</a>
+
+                        </div>
+
+                    </li>
+
+                    <li class="nav-item ml-lg-3"><a class="nav-link" href="#"> Kalendarz </a></li>
+
+                    <li class="nav-item ml-lg-3"><a class="nav-link" href="#"> Publikacje </a></li>
+
+                    <li class="nav-item ml-lg-3"><a class="nav-link" href="#"> Edukacja </a></li>
+
+                    <li class="nav-item ml-lg-3"><a class="nav-link" href="#"> Kontakt </a></li>
+
+                </ul>
+                <!--        
+                    na razie zamykam to, to jest formularz na wyszukanie czegoś na stronie
+
+                <form class="form-inline">
+
+                    <input class="form-control mr-2" type="search" placeholder="Wyszukaj...">
+                    <button class="btn btn-light" type="submit">Znajdź</button>
+    
+                </form>
+                -->
+                <ul class="navbar-nav websites-logos">
+                    <a class="nav-link" href="https://github.com/pwazydrag/EDIProject"><img src="img/github.png" width="40" height="40" class="mr-1"  alt="Github"></a>
+                    <a class="nav-link" href="#"><img src="img/facebook.png" width="40" height="40" class="mr-1"  alt="facebook"></a>
+                    <a class="nav-link" href="#"><img src="img/instagram.png" width="40" height="40" class="mr-1"  alt="instagram"></a>
+                </ul>
+            </div>
+
+            
+
+        </nav>
+    </header>
+    
+    <main>
+        <article>
+
+
+            <div class="container">
+
+
+                <div class="row">
+
+                    <aside class="d-none d-md-block col-md-12 text-center">
+                        <img class="img-fluid" src="img/Reklama1.png"  alt="Reklama">
+                    </aside>
+
+                    <aside class="d-md-none col-12 text-center">
+                        <img src="img/Reklama1smalledited.png" alt="Reklama" class="img-fluid">
+                    </aside>
+
+                    <div class="col-lg-8 p-4">
+
+                        <h3 class="h3 font-weight-bold text-center mb-3">Statystyki:</h3>
+                        <header id="notowania" class="ml-2">
+                            
+
+                        </header>
+                        
+                    </div>
+
+                    <aside class="col-lg-4">
+
+                        <h3 class="h4 text-center font-weight-bold mt-3">Wybierz walutę:</h3>
+                        <ul class="list-group my-3 mr-3">
+                            <a href="#" onclick="Euro10()" class="list-group-item list-group-item-dark list-group-item-action ">Euro (EUR)</a>
+                            <a href="#" onclick="DolarAm10()" class="list-group-item list-group-item-dark list-group-item-action">Dolar amerykański (USD)</a>
+                            <a href="#" onclick="FuntSz10()" class="list-group-item list-group-item-dark list-group-item-action">Funt szterling (GBP)</a>
+                            <a href="#" onclick="Rubel10()" class="list-group-item list-group-item-dark list-group-item-action">Rubel rosyjski (RUB)</a>
+                            <a href="#" onclick="KoronaCz10()" class="list-group-item list-group-item-dark list-group-item-action">Korona czeska (CZK)</a>
+                            <a href="#" onclick="FrankSz10()" class="list-group-item list-group-item-dark list-group-item-action">Frank szwajcarski (CHF)</a>
+                            <a href="#" onclick="DolarKa10()" class="list-group-item list-group-item-dark list-group-item-action">Dolar kanadyjski (CAD)</a>
+                            <a href="#" onclick="Forint10()" class="list-group-item list-group-item-dark list-group-item-action">Forint (HUF)</a>
+                            <a href="#" onclick="Lew10()" class="list-group-item list-group-item-dark list-group-item-action">Lew (BGN)</a>
+                        </ul>
+
+                    </aside>
+
+
+
+                </div>
+
+
+            </div>
+
+
+        </article>
+    </main>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+            
+        function Euro10(){
+                var notowania = document.getElementById('notowania');
+                var euro = new XMLHttpRequest();
+                euro.onreadystatechange = function(){
+                if (euro.readyState == 4 && euro.status==200){
+                    var p1 =JSON.parse(euro.responseText);
+                    var p = document.createElement('p'); 
+
+                        $("#notowania").empty();
+                        let newH4 = document.createElement('h4')
+                        newH4.innerText = '10 ostatnich notowań euro:'
+                        newH4.setAttribute('class','h4 ml-3 mt-3')
+                        notowania.appendChild(newH4)
+                        for (i=0; i<10; i++){
+                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
+                        p.setAttribute('class', 'mt-4 ml-3')
+                        notowania.appendChild(p)
+                        
+            };
+            
+
+        };
+    }
+
+        euro.open('GET','http://api.nbp.pl/api/exchangerates/rates/a/eur/last/10/?format=json');
+        euro.send();
+    }
+
+
+    function DolarAm10(){
+                var notowania = document.getElementById('notowania');
+                var dolar = new XMLHttpRequest();
+                dolar.onreadystatechange = function(){
+                if (dolar.readyState == 4 && dolar.status==200){
+                    var p1 =JSON.parse(dolar.responseText);
+                    var p = document.createElement('p'); 
+
+                        $("#notowania").empty();
+                        let newH4 = document.createElement('h4')
+                        newH4.innerText = '10 ostatnich notowań dolara amerykańskiego:'
+                        newH4.setAttribute('class','h4 ml-3 mt-3')
+                        notowania.appendChild(newH4)
+                        for (i=0; i<10; i++){
+                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
+                        p.setAttribute('class', 'mt-4 ml-3')
+                        notowania.appendChild(p)
+                        
+            };
+            
+
+        };
+    }
+
+        dolar.open('GET','http://api.nbp.pl/api/exchangerates/rates/a/usd/last/10/?format=json');
+        dolar.send();
+    }
+
+    function FuntSz10(){
+                var notowania = document.getElementById('notowania');
+                var funt = new XMLHttpRequest();
+                funt.onreadystatechange = function(){
+                if (funt.readyState == 4 && funt.status==200){
+                    var p1 =JSON.parse(funt.responseText);
+                    var p = document.createElement('p'); 
+
+                        $("#notowania").empty();
+                        let newH4 = document.createElement('h4')
+                        newH4.innerText = '10 ostatnich notowań funta szterlinga:'
+                        newH4.setAttribute('class','h4 ml-3 mt-3')
+                        notowania.appendChild(newH4)
+                        for (i=0; i<10; i++){
+                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
+                        p.setAttribute('class', 'mt-4 ml-3')
+                        notowania.appendChild(p)
+                        
+            };
+            
+
+        };
+    }
+
+        funt.open('GET','http://api.nbp.pl/api/exchangerates/rates/a/gbp/last/10/?format=json');
+        funt.send();
+    }
+
+
+    function Rubel10(){
+                var notowania = document.getElementById('notowania');
+                var rubel = new XMLHttpRequest();
+                rubel.onreadystatechange = function(){
+                if (rubel.readyState == 4 && rubel.status==200){
+                    var p1 =JSON.parse(rubel.responseText);
+                    var p = document.createElement('p'); 
+
+                        $("#notowania").empty();
+                        let newH4 = document.createElement('h4')
+                        newH4.innerText = '10 ostatnich notowań rubla rosyjskiego:'
+                        newH4.setAttribute('class','h4 ml-3 mt-3')
+                        notowania.appendChild(newH4)
+                        for (i=0; i<10; i++){
+                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
+                        p.setAttribute('class', 'mt-4 ml-3')
+                        notowania.appendChild(p)
+                        
+            };
+            
+
+        };
+    }
+
+        rubel.open('GET','http://api.nbp.pl/api/exchangerates/rates/a/rub/last/10/?format=json');
+        rubel.send();
+    }
+
+    function KoronaCz10(){
+                var notowania = document.getElementById('notowania');
+                var korona = new XMLHttpRequest();
+                korona.onreadystatechange = function(){
+                if (korona.readyState == 4 && korona.status==200){
+                    var p1 =JSON.parse(korona.responseText);
+                    var p = document.createElement('p'); 
+
+                        $("#notowania").empty();
+                        let newH4 = document.createElement('h4')
+                        newH4.innerText = '10 ostatnich notowań korony czeskiej:'
+                        newH4.setAttribute('class','h4 ml-3 mt-3')
+                        notowania.appendChild(newH4)
+                        for (i=0; i<10; i++){
+                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
+                        p.setAttribute('class', 'mt-4 ml-3')
+                        notowania.appendChild(p)
+                        
+            };
+            
+
+        };
+    }
+
+        korona.open('GET','http://api.nbp.pl/api/exchangerates/rates/a/czk/last/10/?format=json');
+        korona.send();
+    }
+
+    function FrankSz10(){
+                var notowania = document.getElementById('notowania');
+                var frank = new XMLHttpRequest();
+                frank.onreadystatechange = function(){
+                if (frank.readyState == 4 && frank.status==200){
+                    var p1 =JSON.parse(frank.responseText);
+                    var p = document.createElement('p'); 
+
+                        $("#notowania").empty();
+                        let newH4 = document.createElement('h4')
+                        newH4.innerText = '10 ostatnich notowań franka szwajcarskiego:'
+                        newH4.setAttribute('class','h4 ml-3 mt-3')
+                        notowania.appendChild(newH4)
+                        for (i=0; i<10; i++){
+                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
+                        p.setAttribute('class', 'mt-4 ml-3')
+                        notowania.appendChild(p)
+                        
+            };
+            
+
+        };
+    }
+
+        frank.open('GET','http://api.nbp.pl/api/exchangerates/rates/a/chf/last/10/?format=json');
+        frank.send();
+    }
+
+    function DolarKa10(){
+                var notowania = document.getElementById('notowania');
+                var dolar = new XMLHttpRequest();
+                dolar.onreadystatechange = function(){
+                if (dolar.readyState == 4 && dolar.status==200){
+                    var p1 =JSON.parse(dolar.responseText);
+                    var p = document.createElement('p'); 
+
+                        $("#notowania").empty();
+                        let newH4 = document.createElement('h4')
+                        newH4.innerText = '10 ostatnich notowań dolara kanadyjskiego:'
+                        newH4.setAttribute('class','h4 ml-3 mt-3')
+                        notowania.appendChild(newH4)
+                        for (i=0; i<10; i++){
+                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
+                        p.setAttribute('class', 'mt-4 ml-3')
+                        notowania.appendChild(p)
+                        
+            };
+            
+
+        };
+    }
+
+        dolar.open('GET','http://api.nbp.pl/api/exchangerates/rates/a/cad/last/10/?format=json');
+        dolar.send();
+    }
+
+    function Forint10(){
+                var notowania = document.getElementById('notowania');
+                var forint = new XMLHttpRequest();
+                forint.onreadystatechange = function(){
+                if (forint.readyState == 4 && forint.status==200){
+                    var p1 =JSON.parse(forint.responseText);
+                    var p = document.createElement('p'); 
+
+                        $("#notowania").empty();
+                        let newH4 = document.createElement('h4')
+                        newH4.innerText = '10 ostatnich notowań forintu:'
+                        newH4.setAttribute('class','h4 ml-3 mt-3')
+                        notowania.appendChild(newH4)
+                        for (i=0; i<10; i++){
+                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
+                        p.setAttribute('class', 'mt-4 ml-3')
+                        notowania.appendChild(p)
+                        
+            };
+            
+
+        };
+    }
+
+        forint.open('GET','http://api.nbp.pl/api/exchangerates/rates/a/huf/last/10/?format=json');
+        forint.send();
+    }
+
+    function Lew10(){
+                var notowania = document.getElementById('notowania');
+                var lew = new XMLHttpRequest();
+                lew.onreadystatechange = function(){
+                if (lew.readyState == 4 && lew.status==200){
+                    var p1 =JSON.parse(lew.responseText);
+                    var p = document.createElement('p'); 
+
+                        $("#notowania").empty();
+                        let newH4 = document.createElement('h4')
+                        newH4.innerText = '10 ostatnich notowań lewa:'
+                        newH4.setAttribute('class','h4 ml-3 mt-3')
+                        notowania.appendChild(newH4)
+                        for (i=0; i<10; i++){
+                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
+                        p.setAttribute('class', 'mt-4 ml-3')
+                        notowania.appendChild(p)
+                        
+            };
+            
+
+        };
+    }
+
+        lew.open('GET','http://api.nbp.pl/api/exchangerates/rates/a/bgn/last/10/?format=json');
+        lew.send();
+    }
+    </script>
+</body>
+</html>
