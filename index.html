@@ -135,8 +135,43 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script>
-            
+
+        var tab_nazwy = []
+        var tab_wart = []
+
+        var tab = new XMLHttpRequest()
+        tab.onreadystatechange = function(){
+            if (tab.readyState == 4 && tab.status==200){
+                var spar = JSON.parse(tab.responseText)
+
+                for (i=0; i<27; i++){
+                    var pom = spar['dimension']['geo']['category']['label']
+                    var nazwy = Object.values(pom)[i]
+                    var value = spar['value'][i]
+                    tab_nazwy.push(nazwy)
+                    tab_wart.push(value)
+                }
+            }
+        }
+        tab.open('GET','http://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/sdg_17_40?na_item=GD&precision=1&lastTimePeriod=1&geo=AT&geo=BE&geo=BG&geo=CY&geo=CZ&geo=DK&geo=EE&geo=EL&geo=ES&geo=FI&geo=FR&geo=HR&geo=HU&geo=IE&geo=IT&geo=LT&geo=LU&geo=LV&geo=MT&geo=NL&geo=PL&geo=PT&geo=RO&geo=SE&geo=SI&geo=SK&geo=UK&unit=MIO_EUR&sector=S13')
+        tab.send()
+
+        var current_pln_eur = 0
+
+        var pot = new XMLHttpRequest()
+        pot.onreadystatechange = function(){
+            if (pot.readyState == 4 && pot.status==200){
+                var p1 =JSON.parse(pot.responseText)
+                current_pln_eur = p1['rates'][9]['mid']
+            }
+        }
+
+        pot.open('GET','http://api.nbp.pl/api/exchangerates/rates/a/eur/last/10/?format=json')
+        pot.send()
+
+
         function Euro10(){
                 var notowania = document.getElementById('notowania');
                 var euro = new XMLHttpRequest();
@@ -151,12 +186,15 @@
                         newH4.setAttribute('class','h4 ml-3 mt-3')
                         notowania.appendChild(newH4)
                         for (i=0; i<10; i++){
-                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
+                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'].toFixed(4) + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
                         
             };
-            
+
+            var title = 'Dług publiczny w milionach Euro'
+            var current = p1['rates'][9]['mid']
+            display_chart(current, title)  
 
         };
     }
@@ -180,12 +218,15 @@
                         newH4.setAttribute('class','h4 ml-3 mt-3')
                         notowania.appendChild(newH4)
                         for (i=0; i<10; i++){
-                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
+                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'].toFixed(4) + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
                         
             };
             
+            var title = 'Dług publiczny w milionach Dolarów'
+            var current = p1['rates'][9]['mid']
+            display_chart(current,title)
 
         };
     }
@@ -208,13 +249,16 @@
                         newH4.setAttribute('class','h4 ml-3 mt-3')
                         notowania.appendChild(newH4)
                         for (i=0; i<10; i++){
-                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
+                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'].toFixed(4) + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
                         
             };
             
-
+            var title = 'Dług publiczny w milionach Funtów'
+            var current = p1['rates'][9]['mid']
+            display_chart(current,title)
+            
         };
     }
 
@@ -237,13 +281,16 @@
                         newH4.setAttribute('class','h4 ml-3 mt-3')
                         notowania.appendChild(newH4)
                         for (i=0; i<10; i++){
-                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
+                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'].toFixed(4) + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
                         
             };
             
-
+            var title = 'Dług publiczny w milionach Rubli'
+            var current = p1['rates'][9]['mid']
+            display_chart(current,title)
+            
         };
     }
 
@@ -265,13 +312,16 @@
                         newH4.setAttribute('class','h4 ml-3 mt-3')
                         notowania.appendChild(newH4)
                         for (i=0; i<10; i++){
-                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
+                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'].toFixed(4) + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
                         
             };
             
-
+            var title = 'Dług publiczny w milionach Koron'
+            var current = p1['rates'][9]['mid']
+            display_chart(current, title)  
+            
         };
     }
 
@@ -293,13 +343,16 @@
                         newH4.setAttribute('class','h4 ml-3 mt-3')
                         notowania.appendChild(newH4)
                         for (i=0; i<10; i++){
-                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
+                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'].toFixed(4) + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
                         
             };
             
-
+            var title = 'Dług publiczny w milionach Franków'
+            var current = p1['rates'][9]['mid']
+            display_chart(current, title)  
+            
         };
     }
 
@@ -321,13 +374,16 @@
                         newH4.setAttribute('class','h4 ml-3 mt-3')
                         notowania.appendChild(newH4)
                         for (i=0; i<10; i++){
-                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
+                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'].toFixed(4) + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
                         
             };
             
-
+            var title = 'Dług publiczny w milionach Dolarów Kanadyjskich'
+            var current = p1['rates'][9]['mid']
+            display_chart(current, title)  
+            
         };
     }
 
@@ -349,13 +405,16 @@
                         newH4.setAttribute('class','h4 ml-3 mt-3')
                         notowania.appendChild(newH4)
                         for (i=0; i<10; i++){
-                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
+                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'].toFixed(4) + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
                         
             };
             
-
+            var title = 'Dług publiczny w milionach Forintów'
+            var current = p1['rates'][9]['mid']
+            display_chart(current, title)  
+            
         };
     }
 
@@ -377,19 +436,68 @@
                         newH4.setAttribute('class','h4 ml-3 mt-3')
                         notowania.appendChild(newH4)
                         for (i=0; i<10; i++){
-                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
+                        p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'].toFixed(4) + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
                         
             };
             
-
+            var title = 'Dług publiczny w milionach Lwów'
+            var current = p1['rates'][9]['mid']
+            display_chart(current, title)  
+            
         };
     }
 
         lew.open('GET','http://api.nbp.pl/api/exchangerates/rates/a/bgn/last/10/?format=json');
         lew.send();
     }
+
+    
+    function display_chart(current, title) {
+
+        var space = document.createElement('canvas')
+        space.setAttribute('id','myChart')
+        space.setAttribute('width','400')
+        space.setAttribute('height','400')
+        notowania.appendChild(space)
+
+        var tab_wart_new = []
+
+        for (i=0; i<27; i++) {
+            var value_in_pln = tab_wart[i] * current_pln_eur
+            var value_in_new = value_in_pln / current
+            tab_wart_new.push(value_in_new.toFixed(3))
+        }
+
+        tab_kolor = []
+        tab_border = []
+        for (i=0; i<27; i++){
+            var kolor1 = Math.floor((Math.random() * 255))
+            var kolor2 = Math.floor((Math.random() * 255))
+            var kolor3 = Math.floor((Math.random() * 255))
+            new_kolor = 'rgba(' + kolor1 + ', ' + kolor2 + ', ' + kolor3 + ', 0.2)'
+            new_border = 'rgba(' + kolor1 + ', ' + kolor2 + ', ' + kolor3 + ', 1)'
+            tab_kolor.push(new_kolor) 
+            tab_border.push(new_border)
+        }
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: tab_nazwy,
+                datasets: [{
+                    label: title,
+                    data: tab_wart_new,
+                    backgroundColor: tab_kolor,
+                    borderColor: tab_border,
+                    borderWidth: 1
+                }]
+            },
+        });
+    }
+
     </script>
 </body>
 </html>
