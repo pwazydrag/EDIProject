@@ -124,7 +124,7 @@
 
 
             </div>
-
+            <canvas id="myChart" width="400" height="400"></canvas>
 
         </article>
     </main>
@@ -135,6 +135,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="chart.js/dist/Chart.js"></script>
     <script>
             
         function Euro10(){
@@ -144,6 +145,8 @@
                 if (euro.readyState == 4 && euro.status==200){
                     var p1 =JSON.parse(euro.responseText);
                     var p = document.createElement('p'); 
+                    var labels = []
+                    var data = []
 
                         $("#notowania").empty();
                         let newH4 = document.createElement('h4')
@@ -154,11 +157,37 @@
                         p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
+                        labels.push(p1['rates'][i]['effectiveDate'])
+                        data.push(p1['rates'][i]['mid'])
                         
             };
-            
+            var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Kurs waluty',
+                                data: data,
+                                backgroundColor: 'rgba(107, 212, 219, 0.2)',
+                                borderColor: 'rgba(107, 212, 219, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            }
+                        }
+                    });
 
         };
+
+
     }
 
         euro.open('GET','http://api.nbp.pl/api/exchangerates/rates/a/eur/last/10/?format=json');
@@ -173,6 +202,8 @@
                 if (dolar.readyState == 4 && dolar.status==200){
                     var p1 =JSON.parse(dolar.responseText);
                     var p = document.createElement('p'); 
+                    var labels = []
+                    var data = []
 
                         $("#notowania").empty();
                         let newH4 = document.createElement('h4')
@@ -183,9 +214,32 @@
                         p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
-                        
+                        labels.push(p1['rates'][i]['effectiveDate'])
+                        data.push(p1['rates'][i]['mid'])
             };
-            
+            var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Kurs waluty',
+                                data: data,
+                                backgroundColor: 'rgba(107, 212, 219, 0.2)',
+                                borderColor: 'rgba(107, 212, 219, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            }
+                        }
+                    });
 
         };
     }
@@ -201,6 +255,8 @@
                 if (funt.readyState == 4 && funt.status==200){
                     var p1 =JSON.parse(funt.responseText);
                     var p = document.createElement('p'); 
+                    var labels = []
+                    var data = []
 
                         $("#notowania").empty();
                         let newH4 = document.createElement('h4')
@@ -211,9 +267,32 @@
                         p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
-                        
+                        labels.push(p1['rates'][i]['effectiveDate'])
+                        data.push(p1['rates'][i]['mid'])
             };
-            
+            var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Kurs waluty',
+                                data: data,
+                                backgroundColor: 'rgba(107, 212, 219, 0.2)',
+                                borderColor: 'rgba(107, 212, 219, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            }
+                        }
+                    });
 
         };
     }
@@ -230,6 +309,8 @@
                 if (rubel.readyState == 4 && rubel.status==200){
                     var p1 =JSON.parse(rubel.responseText);
                     var p = document.createElement('p'); 
+                    var labels = []
+                    var data = []
 
                         $("#notowania").empty();
                         let newH4 = document.createElement('h4')
@@ -240,9 +321,32 @@
                         p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
-                        
+                        labels.push(p1['rates'][i]['effectiveDate'])
+                        data.push(p1['rates'][i]['mid'])
             };
-            
+            var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Kurs waluty',
+                                data: data,
+                                backgroundColor: 'rgba(107, 212, 219, 0.2)',
+                                borderColor: 'rgba(107, 212, 219, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            }
+                        }
+                    });
 
         };
     }
@@ -258,6 +362,8 @@
                 if (korona.readyState == 4 && korona.status==200){
                     var p1 =JSON.parse(korona.responseText);
                     var p = document.createElement('p'); 
+                    var labels = []
+                    var data = []
 
                         $("#notowania").empty();
                         let newH4 = document.createElement('h4')
@@ -268,9 +374,32 @@
                         p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
-                        
+                        labels.push(p1['rates'][i]['effectiveDate'])
+                        data.push(p1['rates'][i]['mid'])
             };
-            
+            var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Kurs waluty',
+                                data: data,
+                                backgroundColor: 'rgba(107, 212, 219, 0.2)',
+                                borderColor: 'rgba(107, 212, 219, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            }
+                        }
+                    });
 
         };
     }
@@ -286,6 +415,8 @@
                 if (frank.readyState == 4 && frank.status==200){
                     var p1 =JSON.parse(frank.responseText);
                     var p = document.createElement('p'); 
+                    var labels = []
+                    var data = []
 
                         $("#notowania").empty();
                         let newH4 = document.createElement('h4')
@@ -296,9 +427,32 @@
                         p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
-                        
+                        labels.push(p1['rates'][i]['effectiveDate'])
+                        data.push(p1['rates'][i]['mid'])
             };
-            
+            var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Kurs waluty',
+                                data: data,
+                                backgroundColor: 'rgba(107, 212, 219, 0.2)',
+                                borderColor: 'rgba(107, 212, 219, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            }
+                        }
+                    });
 
         };
     }
@@ -314,6 +468,8 @@
                 if (dolar.readyState == 4 && dolar.status==200){
                     var p1 =JSON.parse(dolar.responseText);
                     var p = document.createElement('p'); 
+                    var labels = []
+                    var data = []
 
                         $("#notowania").empty();
                         let newH4 = document.createElement('h4')
@@ -324,9 +480,32 @@
                         p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
-                        
+                        labels.push(p1['rates'][i]['effectiveDate'])
+                        data.push(p1['rates'][i]['mid'])
             };
-            
+            var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Kurs waluty',
+                                data: data,
+                                backgroundColor: 'rgba(107, 212, 219, 0.2)',
+                                borderColor: 'rgba(107, 212, 219, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            }
+                        }
+                    });
 
         };
     }
@@ -342,6 +521,8 @@
                 if (forint.readyState == 4 && forint.status==200){
                     var p1 =JSON.parse(forint.responseText);
                     var p = document.createElement('p'); 
+                    var labels = []
+                    var data = []
 
                         $("#notowania").empty();
                         let newH4 = document.createElement('h4')
@@ -352,9 +533,32 @@
                         p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
-                        
+                        labels.push(p1['rates'][i]['effectiveDate'])
+                        data.push(p1['rates'][i]['mid'])
             };
-            
+            var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Kurs waluty',
+                                data: data,
+                                backgroundColor: 'rgba(107, 212, 219, 0.2)',
+                                borderColor: 'rgba(107, 212, 219, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            }
+                        }
+                    });
 
         };
     }
@@ -370,6 +574,8 @@
                 if (lew.readyState == 4 && lew.status==200){
                     var p1 =JSON.parse(lew.responseText);
                     var p = document.createElement('p'); 
+                    var labels = []
+                    var data = []
 
                         $("#notowania").empty();
                         let newH4 = document.createElement('h4')
@@ -380,9 +586,32 @@
                         p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'] + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
-                        
+                        labels.push(p1['rates'][i]['effectiveDate'])
+                        data.push(p1['rates'][i]['mid'])
             };
-            
+            var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Kurs waluty',
+                                data: data,
+                                backgroundColor: 'rgba(107, 212, 219, 0.2)',
+                                borderColor: 'rgba(107, 212, 219, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            }
+                        }
+                    });
 
         };
     }
