@@ -115,9 +115,8 @@
                             <a href="#" onclick="Forint10()" class="list-group-item list-group-item-dark list-group-item-action">Forint (HUF)</a>
                             <a href="#" onclick="Lew10()" class="list-group-item list-group-item-dark list-group-item-action">Lew (BGN)</a>
                         </ul>
-
+                        <canvas id="liniowy" width="400" height="400"></canvas>
                     </aside>
-
 
 
                 </div>
@@ -171,6 +170,10 @@
         pot.open('GET','http://api.nbp.pl/api/exchangerates/rates/a/eur/last/10/?format=json')
         pot.send()
 
+        function updateData(label_array, data_array){
+            label_array
+        }
+
 
         function Euro10(){
                 var notowania = document.getElementById('notowania');
@@ -179,7 +182,8 @@
                 if (euro.readyState == 4 && euro.status==200){
                     var p1 =JSON.parse(euro.responseText);
                     var p = document.createElement('p'); 
-
+                    var labels = []
+                    var data = []
                         $("#notowania").empty();
                         let newH4 = document.createElement('h4')
                         newH4.innerText = '10 ostatnich notowań euro:'
@@ -189,8 +193,34 @@
                         p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'].toFixed(4) + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
-                        
+                        labels.push(p1['rates'][i]['effectiveDate'])
+                        data.push(p1['rates'][i]['mid'])
             };
+            var ctx = document.getElementById('liniowy').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Kurs wybranej waluty w czasie',
+                                data: data,
+                                backgroundColor: 'rgba(107, 212, 219, 0.2)',
+                                borderColor: 'rgba(107, 212, 219, 1)',
+                                borderWidth: 3
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                    console.log(data)
+
 
             var title = 'Dług publiczny w milionach Euro'
             var current = p1['rates'][9]['mid']
@@ -211,7 +241,8 @@
                 if (dolar.readyState == 4 && dolar.status==200){
                     var p1 =JSON.parse(dolar.responseText);
                     var p = document.createElement('p'); 
-
+                    var labels = []
+                    var data = []
                         $("#notowania").empty();
                         let newH4 = document.createElement('h4')
                         newH4.innerText = '10 ostatnich notowań dolara amerykańskiego:'
@@ -221,9 +252,37 @@
                         p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'].toFixed(4) + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
-                        
+                        labels.push(p1['rates'][i]['effectiveDate'])
+                        data.push(p1['rates'][i]['mid'])
             };
-            
+
+            var ctx = document.getElementById('liniowy').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Kurs wybranej waluty w czasie',
+                                data: data,
+                                backgroundColor: 'rgba(107, 212, 219, 0.2)',
+                                borderColor: 'rgba(107, 212, 219, 1)',
+                                borderWidth: 3
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                    console.log(data)
+
+
+
             var title = 'Dług publiczny w milionach Dolarów'
             var current = p1['rates'][9]['mid']
             display_chart(current,title)
@@ -242,6 +301,8 @@
                 if (funt.readyState == 4 && funt.status==200){
                     var p1 =JSON.parse(funt.responseText);
                     var p = document.createElement('p'); 
+                    var labels = []
+                    var data = [] 
 
                         $("#notowania").empty();
                         let newH4 = document.createElement('h4')
@@ -252,13 +313,43 @@
                         p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'].toFixed(4) + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
+                        labels.push(p1['rates'][i]['effectiveDate'])
+                        data.push(p1['rates'][i]['mid'])
                         
             };
-            
+            var ctx = document.getElementById('liniowy').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Kurs wybranej waluty w czasie',
+                                data: data,
+                                backgroundColor: 'rgba(107, 212, 219, 0.2)',
+                                borderColor: 'rgba(107, 212, 219, 1)',
+                                borderWidth: 3
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            }
+                        }
+                    });
             var title = 'Dług publiczny w milionach Funtów'
             var current = p1['rates'][9]['mid']
             display_chart(current,title)
             
+
+            var title = 'Dług publiczny w milionach Funtów'
+            var current = p1['rates'][9]['mid']
+            display_chart(current,title)
+            
+
         };
     }
 
@@ -274,6 +365,8 @@
                 if (rubel.readyState == 4 && rubel.status==200){
                     var p1 =JSON.parse(rubel.responseText);
                     var p = document.createElement('p'); 
+                    var labels = []
+                    var data = [] 
 
                         $("#notowania").empty();
                         let newH4 = document.createElement('h4')
@@ -284,13 +377,43 @@
                         p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'].toFixed(4) + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
+                        labels.push(p1['rates'][i]['effectiveDate'])
+                        data.push(p1['rates'][i]['mid'])
                         
             };
-            
+            var ctx = document.getElementById('liniowy').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Kurs wybranej waluty w czasie',
+                                data: data,
+                                backgroundColor: 'rgba(107, 212, 219, 0.2)',
+                                borderColor: 'rgba(107, 212, 219, 1)',
+                                borderWidth: 3
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            }
+                        }
+                    });
             var title = 'Dług publiczny w milionach Rubli'
             var current = p1['rates'][9]['mid']
             display_chart(current,title)
             
+
+            var title = 'Dług publiczny w milionach Rubli'
+            var current = p1['rates'][9]['mid']
+            display_chart(current,title)
+            
+
         };
     }
 
@@ -305,6 +428,8 @@
                 if (korona.readyState == 4 && korona.status==200){
                     var p1 =JSON.parse(korona.responseText);
                     var p = document.createElement('p'); 
+                    var labels = []
+                    var data = [] 
 
                         $("#notowania").empty();
                         let newH4 = document.createElement('h4')
@@ -315,13 +440,42 @@
                         p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'].toFixed(4) + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
+                        labels.push(p1['rates'][i]['effectiveDate'])
+                        data.push(p1['rates'][i]['mid'])
                         
             };
-            
+            var ctx = document.getElementById('liniowy').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Kurs wybranej waluty w czasie',
+                                data: data,
+                                backgroundColor: 'rgba(107, 212, 219, 0.2)',
+                                borderColor: 'rgba(107, 212, 219, 1)',
+                                borderWidth: 3
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            }
+                        }
+                    });
             var title = 'Dług publiczny w milionach Koron'
             var current = p1['rates'][9]['mid']
             display_chart(current, title)  
             
+
+            var title = 'Dług publiczny w milionach Koron'
+            var current = p1['rates'][9]['mid']
+            display_chart(current, title)  
+
         };
     }
 
@@ -336,6 +490,8 @@
                 if (frank.readyState == 4 && frank.status==200){
                     var p1 =JSON.parse(frank.responseText);
                     var p = document.createElement('p'); 
+                    var labels = []
+                    var data = [] 
 
                         $("#notowania").empty();
                         let newH4 = document.createElement('h4')
@@ -346,13 +502,42 @@
                         p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'].toFixed(4) + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
+                        labels.push(p1['rates'][i]['effectiveDate'])
+                        data.push(p1['rates'][i]['mid'])
                         
             };
-            
+            var ctx = document.getElementById('liniowy').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Kurs wybranej waluty w czasie',
+                                data: data,
+                                backgroundColor: 'rgba(107, 212, 219, 0.2)',
+                                borderColor: 'rgba(107, 212, 219, 1)',
+                                borderWidth: 3
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            }
+                        }
+                    });
             var title = 'Dług publiczny w milionach Franków'
             var current = p1['rates'][9]['mid']
             display_chart(current, title)  
             
+
+            var title = 'Dług publiczny w milionach Franków'
+            var current = p1['rates'][9]['mid']
+            display_chart(current, title)  
+
         };
     }
 
@@ -367,6 +552,8 @@
                 if (dolar.readyState == 4 && dolar.status==200){
                     var p1 =JSON.parse(dolar.responseText);
                     var p = document.createElement('p'); 
+                    var labels = []
+                    var data = [] 
 
                         $("#notowania").empty();
                         let newH4 = document.createElement('h4')
@@ -377,13 +564,43 @@
                         p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'].toFixed(4) + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
+                        labels.push(p1['rates'][i]['effectiveDate'])
+                        data.push(p1['rates'][i]['mid'])
                         
             };
-            
+            var ctx = document.getElementById('liniowy').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Kurs wybranej waluty w czasie',
+                                data: data,
+                                backgroundColor: 'rgba(107, 212, 219, 0.2)',
+                                borderColor: 'rgba(107, 212, 219, 1)',
+                                borderWidth: 3
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            }
+                        }
+                    });
             var title = 'Dług publiczny w milionach Dolarów Kanadyjskich'
             var current = p1['rates'][9]['mid']
             display_chart(current, title)  
             
+
+            var title = 'Dług publiczny w milionach Dolarów Kanadyjskich'
+            var current = p1['rates'][9]['mid']
+            display_chart(current, title)  
+            
+
         };
     }
 
@@ -398,6 +615,8 @@
                 if (forint.readyState == 4 && forint.status==200){
                     var p1 =JSON.parse(forint.responseText);
                     var p = document.createElement('p'); 
+                    var labels = []
+                    var data = [] 
 
                         $("#notowania").empty();
                         let newH4 = document.createElement('h4')
@@ -408,13 +627,42 @@
                         p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'].toFixed(4) + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
+                        labels.push(p1['rates'][i]['effectiveDate'])
+                        data.push(p1['rates'][i]['mid'])
                         
             };
-            
+            var ctx = document.getElementById('liniowy').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Kurs wybranej waluty w czasie',
+                                data: data,
+                                backgroundColor: 'rgba(107, 212, 219, 0.2)',
+                                borderColor: 'rgba(107, 212, 219, 1)',
+                                borderWidth: 3
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            }
+                        }
+                    });
             var title = 'Dług publiczny w milionach Forintów'
             var current = p1['rates'][9]['mid']
             display_chart(current, title)  
             
+
+            var title = 'Dług publiczny w milionach Forintów'
+            var current = p1['rates'][9]['mid']
+            display_chart(current, title)  
+
         };
     }
 
@@ -429,6 +677,8 @@
                 if (lew.readyState == 4 && lew.status==200){
                     var p1 =JSON.parse(lew.responseText);
                     var p = document.createElement('p'); 
+                    var labels = []
+                    var data = [] 
 
                         $("#notowania").empty();
                         let newH4 = document.createElement('h4')
@@ -439,13 +689,43 @@
                         p.innerText += p1['rates'][i]['effectiveDate'] + " : " + p1['rates'][i]['mid'].toFixed(4) + '\n';
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
+                        labels.push(p1['rates'][i]['effectiveDate'])
+                        data.push(p1['rates'][i]['mid'])
                         
             };
-            
+            var ctx = document.getElementById('liniowy').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Kurs wybranej waluty w czasie',
+                                data: data,
+                                backgroundColor: 'rgba(107, 212, 219, 0.2)',
+                                borderColor: 'rgba(107, 212, 219, 1)',
+                                borderWidth: 3
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            }
+                        }
+                    });
             var title = 'Dług publiczny w milionach Lwów'
             var current = p1['rates'][9]['mid']
             display_chart(current, title)  
             
+
+            var title = 'Dług publiczny w milionach Lwów'
+            var current = p1['rates'][9]['mid']
+            display_chart(current, title)  
+            
+
         };
     }
 
