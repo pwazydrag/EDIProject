@@ -174,6 +174,7 @@
             label_array
         }
 
+
         function Euro10(){
                 var notowania = document.getElementById('notowania');
                 var euro = new XMLHttpRequest();
@@ -219,6 +220,8 @@
                         }
                     });
                     console.log(data)
+
+
             var title = 'Dług publiczny w milionach Euro'
             var current = p1['rates'][9]['mid']
             display_chart(current, title)  
@@ -252,6 +255,7 @@
                         labels.push(p1['rates'][i]['effectiveDate'])
                         data.push(p1['rates'][i]['mid'])
             };
+
             var ctx = document.getElementById('liniowy').getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'line',
@@ -276,6 +280,8 @@
                         }
                     });
                     console.log(data)
+
+
 
             var title = 'Dług publiczny w milionach Dolarów'
             var current = p1['rates'][9]['mid']
@@ -338,6 +344,12 @@
             var current = p1['rates'][9]['mid']
             display_chart(current,title)
             
+
+            var title = 'Dług publiczny w milionach Funtów'
+            var current = p1['rates'][9]['mid']
+            display_chart(current,title)
+            
+
         };
     }
 
@@ -396,6 +408,12 @@
             var current = p1['rates'][9]['mid']
             display_chart(current,title)
             
+
+            var title = 'Dług publiczny w milionach Rubli'
+            var current = p1['rates'][9]['mid']
+            display_chart(current,title)
+            
+
         };
     }
 
@@ -453,6 +471,11 @@
             var current = p1['rates'][9]['mid']
             display_chart(current, title)  
             
+
+            var title = 'Dług publiczny w milionach Koron'
+            var current = p1['rates'][9]['mid']
+            display_chart(current, title)  
+
         };
     }
 
@@ -510,6 +533,11 @@
             var current = p1['rates'][9]['mid']
             display_chart(current, title)  
             
+
+            var title = 'Dług publiczny w milionach Franków'
+            var current = p1['rates'][9]['mid']
+            display_chart(current, title)  
+
         };
     }
 
@@ -567,6 +595,12 @@
             var current = p1['rates'][9]['mid']
             display_chart(current, title)  
             
+
+            var title = 'Dług publiczny w milionach Dolarów Kanadyjskich'
+            var current = p1['rates'][9]['mid']
+            display_chart(current, title)  
+            
+
         };
     }
 
@@ -624,6 +658,11 @@
             var current = p1['rates'][9]['mid']
             display_chart(current, title)  
             
+
+            var title = 'Dług publiczny w milionach Forintów'
+            var current = p1['rates'][9]['mid']
+            display_chart(current, title)  
+
         };
     }
 
@@ -681,6 +720,12 @@
             var current = p1['rates'][9]['mid']
             display_chart(current, title)  
             
+
+            var title = 'Dług publiczny w milionach Lwów'
+            var current = p1['rates'][9]['mid']
+            display_chart(current, title)  
+            
+
         };
     }
 
