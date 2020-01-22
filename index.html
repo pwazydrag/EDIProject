@@ -169,6 +169,9 @@
         pot.open('GET','http://api.nbp.pl/api/exchangerates/rates/a/eur/last/10/?format=json')
         pot.send()
 
+        Chart.defaults.global.defaultFontColor = 'black'
+        Chart.defaults.global.defaultFontSize = 15
+
         function updateData(label_array, data_array){
             label_array
         }
@@ -220,7 +223,7 @@
                             }
                         }
                     });
-                    console.log(data)
+                    
 
 
             var title = 'Dług publiczny w milionach Euro'
@@ -281,7 +284,7 @@
                             }
                         }
                     });
-                    console.log(data)
+                    
 
 
 
@@ -700,6 +703,11 @@
 
     
     function display_chart(current, title) {
+
+        var duzy_tytul = document.createElement('p3')
+        var tresc1 = 'Dług publiczny wybranych państw Europejskich:'
+        duzy_tytul.innerHTML = tresc1.fontsize(6)
+        notowania.appendChild(duzy_tytul)
 
         var space = document.createElement('canvas')
         space.setAttribute('id','myChart')
