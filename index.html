@@ -98,7 +98,7 @@
                             
 
                         </header>
-                        
+                        <canvas id="liniowy" width="400" height="400"></canvas>
                     </div>
 
                     <aside class="col-lg-4">
@@ -115,7 +115,6 @@
                             <a href="#" onclick="Forint10()" class="list-group-item list-group-item-dark list-group-item-action">Forint (HUF)</a>
                             <a href="#" onclick="Lew10()" class="list-group-item list-group-item-dark list-group-item-action">Lew (BGN)</a>
                         </ul>
-                        <canvas id="liniowy" width="400" height="400"></canvas>
                     </aside>
 
 
@@ -184,6 +183,7 @@
                     var p = document.createElement('p'); 
                     var labels = []
                     var data = []
+
                         $("#notowania").empty();
                         let newH4 = document.createElement('h4')
                         newH4.innerText = '10 ostatnich notowań euro:'
@@ -196,6 +196,7 @@
                         labels.push(p1['rates'][i]['effectiveDate'])
                         data.push(p1['rates'][i]['mid'])
             };
+            $("#liniowy").empty();
             var ctx = document.getElementById('liniowy').getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'line',
@@ -243,6 +244,7 @@
                     var p = document.createElement('p'); 
                     var labels = []
                     var data = []
+                    
                         $("#notowania").empty();
                         let newH4 = document.createElement('h4')
                         newH4.innerText = '10 ostatnich notowań dolara amerykańskiego:'
@@ -255,7 +257,7 @@
                         labels.push(p1['rates'][i]['effectiveDate'])
                         data.push(p1['rates'][i]['mid'])
             };
-
+            $("#liniowy").empty();
             var ctx = document.getElementById('liniowy').getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'line',
@@ -314,9 +316,9 @@
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
                         labels.push(p1['rates'][i]['effectiveDate'])
-                        data.push(p1['rates'][i]['mid'])
-                        
+                        data.push(p1['rates'][i]['mid'])         
             };
+            $("#liniowy").empty();
             var ctx = document.getElementById('liniowy').getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'line',
@@ -340,11 +342,6 @@
                             }
                         }
                     });
-            var title = 'Dług publiczny w milionach Funtów'
-            var current = p1['rates'][9]['mid']
-            display_chart(current,title)
-            
-
             var title = 'Dług publiczny w milionach Funtów'
             var current = p1['rates'][9]['mid']
             display_chart(current,title)
@@ -378,9 +375,9 @@
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
                         labels.push(p1['rates'][i]['effectiveDate'])
-                        data.push(p1['rates'][i]['mid'])
-                        
+                        data.push(p1['rates'][i]['mid'])          
             };
+            $("#liniowy").empty();
             var ctx = document.getElementById('liniowy').getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'line',
@@ -441,9 +438,9 @@
                         p.setAttribute('class', 'mt-4 ml-3')
                         notowania.appendChild(p)
                         labels.push(p1['rates'][i]['effectiveDate'])
-                        data.push(p1['rates'][i]['mid'])
-                        
+                        data.push(p1['rates'][i]['mid'])  
             };
+            $("#liniowy").empty();
             var ctx = document.getElementById('liniowy').getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'line',
@@ -469,12 +466,7 @@
                     });
             var title = 'Dług publiczny w milionach Koron'
             var current = p1['rates'][9]['mid']
-            display_chart(current, title)  
-            
-
-            var title = 'Dług publiczny w milionach Koron'
-            var current = p1['rates'][9]['mid']
-            display_chart(current, title)  
+            display_chart(current, title)
 
         };
     }
@@ -504,8 +496,8 @@
                         notowania.appendChild(p)
                         labels.push(p1['rates'][i]['effectiveDate'])
                         data.push(p1['rates'][i]['mid'])
-                        
             };
+            $("#liniowy").empty();
             var ctx = document.getElementById('liniowy').getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'line',
@@ -529,11 +521,6 @@
                             }
                         }
                     });
-            var title = 'Dług publiczny w milionach Franków'
-            var current = p1['rates'][9]['mid']
-            display_chart(current, title)  
-            
-
             var title = 'Dług publiczny w milionach Franków'
             var current = p1['rates'][9]['mid']
             display_chart(current, title)  
@@ -566,8 +553,8 @@
                         notowania.appendChild(p)
                         labels.push(p1['rates'][i]['effectiveDate'])
                         data.push(p1['rates'][i]['mid'])
-                        
             };
+            $("#liniowy").empty();
             var ctx = document.getElementById('liniowy').getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'line',
@@ -594,12 +581,6 @@
             var title = 'Dług publiczny w milionach Dolarów Kanadyjskich'
             var current = p1['rates'][9]['mid']
             display_chart(current, title)  
-            
-
-            var title = 'Dług publiczny w milionach Dolarów Kanadyjskich'
-            var current = p1['rates'][9]['mid']
-            display_chart(current, title)  
-            
 
         };
     }
@@ -629,8 +610,8 @@
                         notowania.appendChild(p)
                         labels.push(p1['rates'][i]['effectiveDate'])
                         data.push(p1['rates'][i]['mid'])
-                        
             };
+            $("#liniowy").empty();
             var ctx = document.getElementById('liniowy').getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'line',
@@ -654,11 +635,6 @@
                             }
                         }
                     });
-            var title = 'Dług publiczny w milionach Forintów'
-            var current = p1['rates'][9]['mid']
-            display_chart(current, title)  
-            
-
             var title = 'Dług publiczny w milionach Forintów'
             var current = p1['rates'][9]['mid']
             display_chart(current, title)  
@@ -691,8 +667,8 @@
                         notowania.appendChild(p)
                         labels.push(p1['rates'][i]['effectiveDate'])
                         data.push(p1['rates'][i]['mid'])
-                        
             };
+            $("#liniowy").empty();
             var ctx = document.getElementById('liniowy').getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'line',
@@ -716,11 +692,6 @@
                             }
                         }
                     });
-            var title = 'Dług publiczny w milionach Lwów'
-            var current = p1['rates'][9]['mid']
-            display_chart(current, title)  
-            
-
             var title = 'Dług publiczny w milionach Lwów'
             var current = p1['rates'][9]['mid']
             display_chart(current, title)  
