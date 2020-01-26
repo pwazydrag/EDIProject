@@ -98,7 +98,6 @@
                             
 
                         </header>
-                        <canvas id="liniowy" width="400" height="400"></canvas>
                     </div>
 
                     <aside class="col-lg-4">
@@ -169,6 +168,9 @@
         pot.open('GET','http://api.nbp.pl/api/exchangerates/rates/a/eur/last/10/?format=json')
         pot.send()
 
+        Chart.defaults.global.defaultFontColor = 'black'
+        Chart.defaults.global.defaultFontSize = 15
+
         function updateData(label_array, data_array){
             label_array
         }
@@ -196,7 +198,11 @@
                         labels.push(p1['rates'][i]['effectiveDate'])
                         data.push(p1['rates'][i]['mid'])
             };
-            $("#liniowy").empty();
+            var canvas = document.createElement('canvas')
+            canvas.setAttribute('id','liniowy')
+            canvas.setAttribute('width','400')
+            canvas.setAttribute('height','400')
+            notowania.appendChild(canvas)
             var ctx = document.getElementById('liniowy').getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'line',
@@ -220,7 +226,7 @@
                             }
                         }
                     });
-                    console.log(data)
+                    
 
 
             var title = 'Dług publiczny w milionach Euro'
@@ -257,7 +263,11 @@
                         labels.push(p1['rates'][i]['effectiveDate'])
                         data.push(p1['rates'][i]['mid'])
             };
-            $("#liniowy").empty();
+            var canvas = document.createElement('canvas')
+            canvas.setAttribute('id','liniowy')
+            canvas.setAttribute('width','400')
+            canvas.setAttribute('height','400')
+            notowania.appendChild(canvas)
             var ctx = document.getElementById('liniowy').getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'line',
@@ -281,7 +291,7 @@
                             }
                         }
                     });
-                    console.log(data)
+                    
 
 
 
@@ -318,7 +328,11 @@
                         labels.push(p1['rates'][i]['effectiveDate'])
                         data.push(p1['rates'][i]['mid'])         
             };
-            $("#liniowy").empty();
+            var canvas = document.createElement('canvas')
+            canvas.setAttribute('id','liniowy')
+            canvas.setAttribute('width','400')
+            canvas.setAttribute('height','400')
+            notowania.appendChild(canvas)
             var ctx = document.getElementById('liniowy').getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'line',
@@ -377,7 +391,11 @@
                         labels.push(p1['rates'][i]['effectiveDate'])
                         data.push(p1['rates'][i]['mid'])          
             };
-            $("#liniowy").empty();
+            var canvas = document.createElement('canvas')
+            canvas.setAttribute('id','liniowy')
+            canvas.setAttribute('width','400')
+            canvas.setAttribute('height','400')
+            notowania.appendChild(canvas)
             var ctx = document.getElementById('liniowy').getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'line',
@@ -434,7 +452,11 @@
                         labels.push(p1['rates'][i]['effectiveDate'])
                         data.push(p1['rates'][i]['mid'])  
             };
-            $("#liniowy").empty();
+            var canvas = document.createElement('canvas')
+            canvas.setAttribute('id','liniowy')
+            canvas.setAttribute('width','400')
+            canvas.setAttribute('height','400')
+            notowania.appendChild(canvas)
             var ctx = document.getElementById('liniowy').getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'line',
@@ -491,7 +513,11 @@
                         labels.push(p1['rates'][i]['effectiveDate'])
                         data.push(p1['rates'][i]['mid'])
             };
-            $("#liniowy").empty();
+            var canvas = document.createElement('canvas')
+            canvas.setAttribute('id','liniowy')
+            canvas.setAttribute('width','400')
+            canvas.setAttribute('height','400')
+            notowania.appendChild(canvas)
             var ctx = document.getElementById('liniowy').getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'line',
@@ -548,7 +574,11 @@
                         labels.push(p1['rates'][i]['effectiveDate'])
                         data.push(p1['rates'][i]['mid'])
             };
-            $("#liniowy").empty();
+            var canvas = document.createElement('canvas')
+            canvas.setAttribute('id','liniowy')
+            canvas.setAttribute('width','400')
+            canvas.setAttribute('height','400')
+            notowania.appendChild(canvas)
             var ctx = document.getElementById('liniowy').getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'line',
@@ -605,7 +635,11 @@
                         labels.push(p1['rates'][i]['effectiveDate'])
                         data.push(p1['rates'][i]['mid'])
             };
-            $("#liniowy").empty();
+            var canvas = document.createElement('canvas')
+            canvas.setAttribute('id','liniowy')
+            canvas.setAttribute('width','400')
+            canvas.setAttribute('height','400')
+            notowania.appendChild(canvas)
             var ctx = document.getElementById('liniowy').getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'line',
@@ -662,7 +696,11 @@
                         labels.push(p1['rates'][i]['effectiveDate'])
                         data.push(p1['rates'][i]['mid'])
             };
-            $("#liniowy").empty();
+            var canvas = document.createElement('canvas')
+            canvas.setAttribute('id','liniowy')
+            canvas.setAttribute('width','400')
+            canvas.setAttribute('height','400')
+            notowania.appendChild(canvas)
             var ctx = document.getElementById('liniowy').getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'line',
@@ -700,6 +738,11 @@
 
     
     function display_chart(current, title) {
+
+        var duzy_tytul = document.createElement('p3')
+        var tresc1 = 'Dług publiczny wybranych państw Europejskich:'
+        duzy_tytul.innerHTML = tresc1.fontsize(6)
+        notowania.appendChild(duzy_tytul)
 
         var space = document.createElement('canvas')
         space.setAttribute('id','myChart')
